@@ -17,13 +17,13 @@ const Todo = () => {
     }
   };
 
-  // const completeTask = (taskNameToDelete: string): void => {
-  //   setTodoList(
-  //     todoList.filter((task) => {
-  //       return task.taskName != taskNameToDelete;
-  //     })
-  //   );
-  // };
+  const completeTask = (taskNameToDelete: string): void => {
+    setTodoList(
+      todoList.filter((task) => {
+        return task.taskName != taskNameToDelete;
+      })
+    );
+  };
   const addTask = (): void => {
     const newTask = { taskName: task, deadline: deadline };
     setTodoList([...todoList, newTask]);
@@ -54,7 +54,21 @@ const Todo = () => {
       </form>
         <button  onClick={addTask}>ADD TASK</button>
     </div>
-    
+    <div className="todos">
+      {todoList.map((todo) => (
+        <div className="todo" key={Math.random()}>
+          <h1>{todo.taskName}</h1>
+          <h3>{todo.deadline}</h3>
+          <button
+        onClick={() => {
+          completeTask(todo.taskName);
+        }}
+      >
+        X
+      </button>
+        </div>
+      ))}
+    </div>
     </>
   )
 }
