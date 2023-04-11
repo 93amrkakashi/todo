@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from 'react'
+import Navbar from './Navbar';
 interface ITask {
   taskName: string;
   deadline: number;
@@ -29,10 +30,10 @@ const Todo = () => {
     setTodoList([...todoList, newTask]);
     setTask("");
     setDealine(0);
-    console.log(todoList)
   };
   return (
     <>
+    <Navbar />
     <div className='todo-form'>
       <form >
       <input
@@ -52,7 +53,7 @@ const Todo = () => {
             required={true}
           />
       </form>
-        <button  onClick={addTask}>ADD TASK</button>
+      <button onClick={addTask}>Add Task</button>
     </div>
     <div className="todos">
       {todoList.map((todo) => (
